@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS Variables ─────────────────────────────────────────── */
+:root {
+  --black:  #050508;
+  --cyan:   #00F5FF;
+  --violet: #B07FFF;
+  --coral:  #FF3366;
+  --white:  #FFFFFF;
+  --glass:  rgba(255, 255, 255, 0.08);
+}
+
+/* ─── Base ───────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  background-color: #050508;
+}
+
+body {
+  background-color: #050508;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* ─── Custom Scrollbar ───────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #050508; }
+::-webkit-scrollbar-thumb { background: #00F5FF; border-radius: 2px; }
+
+/* ─── Custom Cursor (desktop only) ──────────────────────────── */
+@media (min-width: 768px) {
+  * { cursor: none !important; }
+}
+
+/* ─── Glassmorphism helper ───────────────────────────────────── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(0, 245, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ─── Scanlines overlay ──────────────────────────────────────── */
+.scanlines {
+  background-image: repeating-linear-gradient(
+    180deg,
+    transparent 0px,
+    transparent 3px,
+    rgba(255, 255, 255, 0.03) 3px,
+    rgba(255, 255, 255, 0.03) 4px
+  );
+  pointer-events: none;
+}
+
+/* ─── Glitch headline ────────────────────────────────────────── */
+.glitch-text {
+  position: relative;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+
+.glitch-text::before {
+  color: #00F5FF;
+  animation: glitch-1 5s infinite linear;
+}
+
+.glitch-text::after {
+  color: #B07FFF;
+  animation: glitch-2 5s infinite linear;
+  animation-delay: 0.15s;
+}
+
+@keyframes glitch-1 {
+  0%,  85%, 100% { clip-path: inset(0 0 100% 0); transform: translate(0); }
+  87% { clip-path: inset(12% 0 72% 0); transform: translate(-3px, 0); }
+  89% { clip-path: inset(58% 0 22% 0); transform: translate(3px, 0);  }
+  91% { clip-path: inset(78% 0  8% 0); transform: translate(-2px, 0); }
+  93% { clip-path: inset(32% 0 52% 0); transform: translate(2px, 0);  }
+  95% { clip-path: inset(0 0 100% 0);  transform: translate(0);       }
+}
+
+@keyframes glitch-2 {
+  0%,  85%, 100% { clip-path: inset(0 0 100% 0); transform: translate(0); }
+  86% { clip-path: inset(62% 0 18% 0); transform: translate(3px, 0);  }
+  88% { clip-path: inset(18% 0 68% 0); transform: translate(-3px, 0); }
+  90% { clip-path: inset(88% 0  4% 0); transform: translate(2px, 0);  }
+  92% { clip-path: inset(42% 0 42% 0); transform: translate(-2px, 0); }
+  94% { clip-path: inset(0 0 100% 0);  transform: translate(0);       }
+}
+
+/* ─── Pulsing availability dot ───────────────────────────────── */
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.6); }
+  50%       { box-shadow: 0 0 0 6px rgba(74, 222, 128, 0);  }
+}
+.pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+
+/* ─── Glow hover util ────────────────────────────────────────── */
+.glow-cyan-hover:hover {
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.3), 0 0 40px rgba(0, 245, 255, 0.1);
+}
+
+/* ─── Section default padding ────────────────────────────────── */
+.section-pad {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
