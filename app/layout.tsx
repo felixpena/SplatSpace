@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Rajdhani, DM_Sans } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 import CustomCursor from '@/components/CustomCursor'
 
@@ -37,6 +38,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         className={`${rajdhani.variable} ${dmSans.variable} font-dm-sans bg-splat-black text-white antialiased`}
       >
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-E5DS61LQMS"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-E5DS61LQMS');
+          `}
+        </Script>
         <CustomCursor />
         {children}
       </body>
