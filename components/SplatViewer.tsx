@@ -89,7 +89,7 @@ export default function SplatViewer() {
 
                 <div className="relative">
                   <iframe
-                    src="https://superspl.at/s?id=02d69af1"
+                    src="https://superspl.at/s?id=237f3dad"
                     loading="lazy"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
                     allowFullScreen
